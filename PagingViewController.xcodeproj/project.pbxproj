@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		C939445715044107008DAE13 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C939445615044107008DAE13 /* QuartzCore.framework */; };
+		C939447915044E2E008DAE13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BB514F9EA1C00730FC5 /* Foundation.framework */; };
+		C939447F15044E2E008DAE13 /* PagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C939447E15044E2E008DAE13 /* PagingScrollView.m */; };
+		C939448615044E2E008DAE13 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BD414F9EA1C00730FC5 /* SenTestingKit.framework */; };
+		C939448715044E2E008DAE13 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BB314F9EA1C00730FC5 /* UIKit.framework */; };
+		C939448815044E2E008DAE13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BB514F9EA1C00730FC5 /* Foundation.framework */; };
+		C939448B15044E2E008DAE13 /* libPagingScrollView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C939447815044E2E008DAE13 /* libPagingScrollView.a */; };
+		C939449115044E2E008DAE13 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C939448F15044E2E008DAE13 /* InfoPlist.strings */; };
+		C939449415044E2E008DAE13 /* PagingScrollViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C939449315044E2E008DAE13 /* PagingScrollViewTests.m */; };
+		C939449C15044E4B008DAE13 /* PagingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = C9555BF315029AE500730FC5 /* PagingScrollView.h */; };
+		C939449D15044E4F008DAE13 /* PagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9555BF415029AE500730FC5 /* PagingScrollView.m */; };
 		C9555BB414F9EA1C00730FC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BB314F9EA1C00730FC5 /* UIKit.framework */; };
 		C9555BB614F9EA1C00730FC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BB514F9EA1C00730FC5 /* Foundation.framework */; };
 		C9555BB814F9EA1C00730FC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BB714F9EA1C00730FC5 /* CoreGraphics.framework */; };
@@ -25,6 +35,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C939448915044E2E008DAE13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9555BA614F9EA1C00730FC5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C939447715044E2E008DAE13;
+			remoteInfo = PagingScrollView;
+		};
 		C9555BD814F9EA1C00730FC5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C9555BA614F9EA1C00730FC5 /* Project object */;
@@ -36,6 +53,15 @@
 
 /* Begin PBXFileReference section */
 		C939445615044107008DAE13 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C939447815044E2E008DAE13 /* libPagingScrollView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPagingScrollView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C939447C15044E2E008DAE13 /* PagingScrollView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PagingScrollView-Prefix.pch"; sourceTree = "<group>"; };
+		C939447D15044E2E008DAE13 /* PagingScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagingScrollView.h; sourceTree = "<group>"; };
+		C939447E15044E2E008DAE13 /* PagingScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagingScrollView.m; sourceTree = "<group>"; };
+		C939448515044E2E008DAE13 /* PagingScrollViewTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagingScrollViewTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C939448E15044E2E008DAE13 /* PagingScrollViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PagingScrollViewTests-Info.plist"; sourceTree = "<group>"; };
+		C939449015044E2E008DAE13 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C939449215044E2E008DAE13 /* PagingScrollViewTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagingScrollViewTests.h; sourceTree = "<group>"; };
+		C939449315044E2E008DAE13 /* PagingScrollViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagingScrollViewTests.m; sourceTree = "<group>"; };
 		C9555BAF14F9EA1C00730FC5 /* PagingViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PagingViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9555BB314F9EA1C00730FC5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9555BB514F9EA1C00730FC5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -61,6 +87,25 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C939447515044E2E008DAE13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C939447915044E2E008DAE13 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C939448115044E2E008DAE13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C939448615044E2E008DAE13 /* SenTestingKit.framework in Frameworks */,
+				C939448715044E2E008DAE13 /* UIKit.framework in Frameworks */,
+				C939448815044E2E008DAE13 /* Foundation.framework in Frameworks */,
+				C939448B15044E2E008DAE13 /* libPagingScrollView.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9555BAC14F9EA1C00730FC5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -85,11 +130,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C939447A15044E2E008DAE13 /* PagingScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				C939447D15044E2E008DAE13 /* PagingScrollView.h */,
+				C939447E15044E2E008DAE13 /* PagingScrollView.m */,
+				C939447B15044E2E008DAE13 /* Supporting Files */,
+			);
+			path = PagingScrollView;
+			sourceTree = "<group>";
+		};
+		C939447B15044E2E008DAE13 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C939447C15044E2E008DAE13 /* PagingScrollView-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C939448C15044E2E008DAE13 /* PagingScrollViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				C939449215044E2E008DAE13 /* PagingScrollViewTests.h */,
+				C939449315044E2E008DAE13 /* PagingScrollViewTests.m */,
+				C939448D15044E2E008DAE13 /* Supporting Files */,
+			);
+			path = PagingScrollViewTests;
+			sourceTree = "<group>";
+		};
+		C939448D15044E2E008DAE13 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C939448E15044E2E008DAE13 /* PagingScrollViewTests-Info.plist */,
+				C939448F15044E2E008DAE13 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		C9555BA414F9EA1C00730FC5 = {
 			isa = PBXGroup;
 			children = (
 				C9555BB914F9EA1C00730FC5 /* PagingViewController */,
 				C9555BDA14F9EA1C00730FC5 /* PagingViewControllerTests */,
+				C939447A15044E2E008DAE13 /* PagingScrollView */,
+				C939448C15044E2E008DAE13 /* PagingScrollViewTests */,
 				C9555BB214F9EA1C00730FC5 /* Frameworks */,
 				C9555BB014F9EA1C00730FC5 /* Products */,
 			);
@@ -100,6 +184,8 @@
 			children = (
 				C9555BAF14F9EA1C00730FC5 /* PagingViewController.app */,
 				C9555BD314F9EA1C00730FC5 /* PagingViewControllerTests.octest */,
+				C939447815044E2E008DAE13 /* libPagingScrollView.a */,
+				C939448515044E2E008DAE13 /* PagingScrollViewTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,7 +250,54 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		C939447615044E2E008DAE13 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C939449C15044E4B008DAE13 /* PagingScrollView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		C939447715044E2E008DAE13 /* PagingScrollView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C939449915044E2E008DAE13 /* Build configuration list for PBXNativeTarget "PagingScrollView" */;
+			buildPhases = (
+				C939447415044E2E008DAE13 /* Sources */,
+				C939447515044E2E008DAE13 /* Frameworks */,
+				C939447615044E2E008DAE13 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PagingScrollView;
+			productName = PagingScrollView;
+			productReference = C939447815044E2E008DAE13 /* libPagingScrollView.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C939448415044E2E008DAE13 /* PagingScrollViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C939449A15044E2E008DAE13 /* Build configuration list for PBXNativeTarget "PagingScrollViewTests" */;
+			buildPhases = (
+				C939448015044E2E008DAE13 /* Sources */,
+				C939448115044E2E008DAE13 /* Frameworks */,
+				C939448215044E2E008DAE13 /* Resources */,
+				C939448315044E2E008DAE13 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C939448A15044E2E008DAE13 /* PBXTargetDependency */,
+			);
+			name = PagingScrollViewTests;
+			productName = PagingScrollViewTests;
+			productReference = C939448515044E2E008DAE13 /* PagingScrollViewTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		C9555BAE14F9EA1C00730FC5 /* PagingViewController */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9555BE514F9EA1C00730FC5 /* Build configuration list for PBXNativeTarget "PagingViewController" */;
@@ -224,11 +357,21 @@
 			targets = (
 				C9555BAE14F9EA1C00730FC5 /* PagingViewController */,
 				C9555BD214F9EA1C00730FC5 /* PagingViewControllerTests */,
+				C939447715044E2E008DAE13 /* PagingScrollView */,
+				C939448415044E2E008DAE13 /* PagingScrollViewTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C939448215044E2E008DAE13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C939449115044E2E008DAE13 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9555BAD14F9EA1C00730FC5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -248,6 +391,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		C939448315044E2E008DAE13 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
 		C9555BD114F9EA1C00730FC5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -264,6 +420,23 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C939447415044E2E008DAE13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C939447F15044E2E008DAE13 /* PagingScrollView.m in Sources */,
+				C939449D15044E4F008DAE13 /* PagingScrollView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C939448015044E2E008DAE13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C939449415044E2E008DAE13 /* PagingScrollViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9555BAB14F9EA1C00730FC5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -287,6 +460,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C939448A15044E2E008DAE13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C939447715044E2E008DAE13 /* PagingScrollView */;
+			targetProxy = C939448915044E2E008DAE13 /* PBXContainerItemProxy */;
+		};
 		C9555BD914F9EA1C00730FC5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C9555BAE14F9EA1C00730FC5 /* PagingViewController */;
@@ -295,6 +473,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		C939448F15044E2E008DAE13 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C939449015044E2E008DAE13 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		C9555BBC14F9EA1C00730FC5 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -314,6 +500,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C939449515044E2E008DAE13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/PagingScrollView.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PagingScrollView/PagingScrollView-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C939449615044E2E008DAE13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/PagingScrollView.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PagingScrollView/PagingScrollView-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C939449715044E2E008DAE13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PagingScrollView/PagingScrollView-Prefix.pch";
+				INFOPLIST_FILE = "PagingScrollViewTests/PagingScrollViewTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		C939449815044E2E008DAE13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PagingScrollView/PagingScrollView-Prefix.pch";
+				INFOPLIST_FILE = "PagingScrollViewTests/PagingScrollViewTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		C9555BE314F9EA1C00730FC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -420,6 +660,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C939449915044E2E008DAE13 /* Build configuration list for PBXNativeTarget "PagingScrollView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C939449515044E2E008DAE13 /* Debug */,
+				C939449615044E2E008DAE13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C939449A15044E2E008DAE13 /* Build configuration list for PBXNativeTarget "PagingScrollViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C939449715044E2E008DAE13 /* Debug */,
+				C939449815044E2E008DAE13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C9555BA914F9EA1C00730FC5 /* Build configuration list for PBXProject "PagingViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

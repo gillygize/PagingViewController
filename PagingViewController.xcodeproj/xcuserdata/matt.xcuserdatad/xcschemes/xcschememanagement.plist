@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>PagingScrollView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>PagingViewController.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>C939447715044E2E008DAE13</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C939448415044E2E008DAE13</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C9555BAE14F9EA1C00730FC5</key>
 		<dict>
 			<key>primary</key>
