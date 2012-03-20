@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol PagingScrollViewDelegate <NSObject>
+
 - (UIView*)viewForIndex:(NSInteger)index;
 
 @optional
@@ -22,6 +23,9 @@
 
 - (void)willDeleteViewAtIndex:(NSInteger)index;
 - (void)didDeleteViewAtIndex:(NSInteger)index;
+
+- (void)willChangeCurrentPageFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex;
+- (void)didChangeCurrentPageFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIsndex;
 @end
 
 @interface PagingScrollView : UIView <UIScrollViewDelegate>
@@ -34,6 +38,10 @@
 - (id)initWithFrame:(CGRect)frame delegate:(id<PagingScrollViewDelegate>)delegate;
 
 - (void)insertViewBeforeCurrentPage;
+- (void)insertViewAfterCurrentPage;
 - (void)deleteViewAtCurrentPage;
 
+- (void)moveForwardOnePage:(BOOL)animated;
+- (void)moveBackwardsOnePage:(BOOL)animated;
+- (void)jumpToPageAtIndex:(NSInteger)index animated:(BOOL)animated;
 @end

@@ -9,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "PagingScrollView.h"
 
-static const NSUInteger viewsCount = 3;
+static const NSUInteger viewsCount = 5;
 
 @interface PagingScrollView ()
 
@@ -37,59 +37,26 @@ static const NSUInteger viewsCount = 3;
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<PagingScrollViewDelegate>)delegate
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-      _views = [[NSMutableArray alloc] initWithCapacity:viewsCount];
-      _centerIndex = viewsCount / 2;
-      _delegate = delegate;
+  if ((self = [super initWithFrame:frame])) {
+    _views = [[NSMutableArray alloc] initWithCapacity:viewsCount];
+    _centerIndex = viewsCount / 2;
+    _delegate = delegate;
       
-      _currentPage = 0;
+    _currentPage = 0;
     
-      _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-      _scrollView.pagingEnabled = YES;
-      _scrollView.delegate = self;
-      _scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-      _scrollView.showsHorizontalScrollIndicator = NO;
-      [self addSubview:_scrollView];
+    _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+    _scrollView.pagingEnabled = YES;
+    _scrollView.delegate = self;
+    _scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    _scrollView.showsHorizontalScrollIndicator = NO;
+    [self addSubview:_scrollView];
+    
+    [self jumpToPageAtIndex:_currentPage animated:NO];
       
-      BOOL leftIsNil = NO;
-      BOOL rightIsNil = NO;
-      NSInteger offset = _currentPage - viewsCount / 2;
-      
-      // This loads the view in the sequence count/2, count/2 + 1, count/2 - 1, etc...
-      // aka. 2, 3, 1, 4, 0, 5
-      // except the offset makes it 0, 1, -1, 2, -2
-      for (NSInteger i = 0; i <= viewsCount / 2; i++) {
-        NSInteger leftPosition = viewsCount / 2 - i + offset;
-        NSInteger rightPosition = viewsCount / 2 + 1 + i + offset;
-                
-        UIView *leftView = [self.delegate viewForIndex:leftPosition];
-          
-        if (leftIsNil || (nil == leftView)) {
-            [_views insertObject:[NSNull null] atIndex:0];
-            leftIsNil = YES;
-        } else {
-          [_views insertObject:leftView atIndex:0];
-        }
-                
-        if ((i != viewsCount / 2)) {
-          UIView *rightView = [self.delegate viewForIndex:rightPosition];
-          
-          if (rightIsNil || (nil == rightView)) {
-            [_views addObject:[NSNull null]];
-            rightIsNil = YES;
-          } else {
-            [_views addObject:rightView];
-          }          
-        }
-        
-        if (leftIsNil && rightIsNil) {
-          break;
-        }
-      }
-    }
+    self.backgroundColor = [UIColor whiteColor];
+  }
 
-    return self;
+  return self;
 }
 
 - (void)dealloc {
@@ -108,17 +75,25 @@ static const NSUInteger viewsCount = 3;
 - (void)update {
   NSIndexSet *viewIndexes = [self validViewIndexes];
   
+  if ([viewIndexes count] < 1) {
+    return;
+  }
+  
   self.currentViewsCount = [viewIndexes count];
 
   for (int i = [viewIndexes firstIndex]; i <= [viewIndexes lastIndex]; i++) {
     UIView *view = [self.views objectAtIndex:i];
-    view.frame = CGRectMake(
-      self.scrollView.bounds.size.width * (i - [viewIndexes firstIndex]),
+    view.bounds = CGRectMake(
+      0.0f,
       0.0f,
       self.scrollView.bounds.size.width,
       self.scrollView.bounds.size.height
     );
-        
+    view.center = CGPointMake(
+      self.scrollView.bounds.size.width / 2.0f + self.scrollView.bounds.size.width * (i - [viewIndexes firstIndex]),
+      self.scrollView.bounds.size.height / 2.0f 
+    );
+            
     if (nil == view.superview) {
       [self.scrollView addSubview:view];
     }
@@ -132,7 +107,7 @@ static const NSUInteger viewsCount = 3;
   self.scrollView.contentOffset = CGPointMake(
     self.scrollView.bounds.size.width * (_centerIndex - [[self validViewIndexes] firstIndex]),
     0.0f
-  );
+  );  
 }
 
 #pragma mark - Public Interface
@@ -207,7 +182,7 @@ static const NSUInteger viewsCount = 3;
 }
 
 - (void)insertViewAfterCurrentPage {
-  [self animateMoveForwardOneView];
+  [self moveForwardOnePage:YES];
   
   double delayInSeconds = 0.6;
   dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -277,7 +252,7 @@ static const NSUInteger viewsCount = 3;
         // one view.
         UIView *newCenterView = [self.views objectAtIndex:self.centerIndex];
         if ([newCenterView isKindOfClass:[NSNull class]]) {
-          [self animateMoveBackwardsOneView];
+          [self moveBackwardsOnePage:YES];
         }
         
         if ([self.delegate respondsToSelector:@selector(didDeleteViewAtIndex:)]) {
@@ -289,9 +264,11 @@ static const NSUInteger viewsCount = 3;
 
 #pragma mark - Internal Methods
 - (void)shift:(NSInteger)shiftAmount {
-  NSLog(@"%d", shiftAmount);
-
   NSAssert(abs(shiftAmount) <= viewsCount / 2, @"The shift was greater than half of the array");
+  
+  if (shiftAmount != 0 && [self.delegate respondsToSelector:@selector(willChangeCurrentPageFromIndex:toIndex:)]) {
+    [self.delegate willChangeCurrentPageFromIndex:self.currentPage toIndex:self.currentPage+shiftAmount];
+  }
   
   if (shiftAmount > 0) {
     NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, shiftAmount)];
@@ -357,31 +334,91 @@ static const NSUInteger viewsCount = 3;
     }
   }
   
-  self.currentPage += shiftAmount;  
+  self.currentPage += shiftAmount;
+  
+  if (shiftAmount != 0 && [self.delegate respondsToSelector:@selector(didChangeCurrentPageFromIndex:toIndex:)]) {
+    [self.delegate didChangeCurrentPageFromIndex:self.currentPage-shiftAmount toIndex:self.currentPage];
+  }
 }
 
-- (void)animateMoveForwardOneView {
-  CGFloat widthPerElement = self.scrollView.contentSize.width / self.currentViewsCount;
-  [UIView animateWithDuration:0.3f
-    animations:^{
-      self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x + widthPerElement, 0.0f);
+- (void)jumpToPageAtIndex:(NSInteger)index animated:(BOOL)animated {
+  BOOL leftIsNil = NO;
+  BOOL rightIsNil = NO;
+  NSInteger offset = index - viewsCount / 2;
+  
+  [self.views removeAllObjects];
+  [[self.scrollView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+      
+  // This loads the view in the sequence count/2, count/2 + 1, count/2 - 1, etc...
+  // aka. 2, 3, 1, 4, 0, 5
+  // except the offset makes it 0, 1, -1, 2, -2
+  for (NSInteger i = 0; i <= viewsCount / 2; i++) {
+    NSInteger leftPosition = viewsCount / 2 - i + offset;
+    NSInteger rightPosition = viewsCount / 2 + 1 + i + offset;
+                
+    UIView *leftView = [self.delegate viewForIndex:leftPosition];
+          
+    if (leftIsNil || (nil == leftView)) {
+      [self.views insertObject:[NSNull null] atIndex:0];
+      leftIsNil = YES;
+    } else {
+      [self.views insertObject:leftView atIndex:0];
     }
-    completion:^(BOOL finished){
-      [self shift:1];
-      [self setNeedsLayout];
-    }];
+                
+    if ((i != viewsCount / 2)) {
+      UIView *rightView = [_delegate viewForIndex:rightPosition];
+          
+      if (rightIsNil || (nil == rightView)) {
+        [self.views addObject:[NSNull null]];
+        rightIsNil = YES;
+      } else {
+        [self.views addObject:rightView];
+      }          
+    }
+  }
+  
+  self.currentPage = index;
+  [self setNeedsLayout];
 }
 
-- (void)animateMoveBackwardsOneView {
+- (void)moveForwardOnePage:(BOOL)animated {
   CGFloat widthPerElement = self.scrollView.contentSize.width / self.currentViewsCount;
-  [UIView animateWithDuration:0.3f
-    animations:^{
-      self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x - widthPerElement, 0.0f);
-    }
-    completion:^(BOOL finished){
-      [self shift:-1];
-      [self setNeedsLayout];
-    }];
+  
+  void(^animations)() = ^{
+    self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x + widthPerElement, 0.0f);
+  };
+  
+  void(^completion)(BOOL finished) = ^(BOOL finished){
+    [self shift:1];
+    [self setNeedsLayout];
+  };
+  
+  if (animated) {
+    [UIView animateWithDuration:0.3f animations:animations completion:completion];
+  } else {
+    animations();
+    completion(YES);
+  }
+}
+
+- (void)moveBackwardsOnePage:(BOOL)animated {
+  CGFloat widthPerElement = self.scrollView.contentSize.width / self.currentViewsCount;
+  
+  void(^animations)() = ^{
+    self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x - widthPerElement, 0.0f);
+  };
+  
+  void(^completion)(BOOL finished) = ^(BOOL finished){
+    [self shift:-1];
+    [self setNeedsLayout];
+  };
+  
+  if (animated) {
+    [UIView animateWithDuration:0.3f animations:animations completion:completion];
+  } else {
+    animations();
+    completion(YES);
+  }
 }
 
 - (NSIndexSet*)validViewIndexes {

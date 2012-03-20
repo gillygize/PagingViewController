@@ -27,7 +27,7 @@
 }
 
 - (UIView*)viewForIndex:(NSInteger)index {
-  if (index < 0 || index >= [self.array count]) {
+  if (index != 0) {
     return nil;
   }
 
