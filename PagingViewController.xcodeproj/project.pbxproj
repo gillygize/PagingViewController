@@ -13,7 +13,7 @@
 		C939448715044E2E008DAE13 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BB314F9EA1C00730FC5 /* UIKit.framework */; };
 		C939448815044E2E008DAE13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BB514F9EA1C00730FC5 /* Foundation.framework */; };
 		C939448B15044E2E008DAE13 /* libPagingScrollView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C939447815044E2E008DAE13 /* libPagingScrollView.a */; };
-		C939449C15044E4B008DAE13 /* PagingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = C9555BF315029AE500730FC5 /* PagingScrollView.h */; };
+		C939449C15044E4B008DAE13 /* PagingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = C9555BF315029AE500730FC5 /* PagingScrollView.h */; settings = {ATTRIBUTES = (); }; };
 		C939449D15044E4F008DAE13 /* PagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9555BF415029AE500730FC5 /* PagingScrollView.m */; };
 		C9555BB414F9EA1C00730FC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BB314F9EA1C00730FC5 /* UIKit.framework */; };
 		C9555BB614F9EA1C00730FC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BB514F9EA1C00730FC5 /* Foundation.framework */; };
