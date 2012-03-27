@@ -32,6 +32,7 @@
 
 @property (nonatomic, retain) UIScrollView *scrollView;
 @property NSInteger currentPage;
+@property (nonatomic, assign) UIView *currentView;
 
 @property (nonatomic, assign) id<PagingScrollViewDelegate> delegate;
 
@@ -44,4 +45,5 @@
 - (void)moveForwardOnePage:(BOOL)animated;
 - (void)moveBackwardsOnePage:(BOOL)animated;
 - (void)jumpToPageAtIndex:(NSInteger)index animated:(BOOL)animated;
+- (void)performSelectorOnViews:(SEL)selector withObject:(id)object;
 @end

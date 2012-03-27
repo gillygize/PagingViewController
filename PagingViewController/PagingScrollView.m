@@ -28,6 +28,7 @@ static const NSUInteger viewsCount = 5;
 
 @synthesize scrollView = _scrollView;
 @synthesize currentPage = _currentPage;
+@synthesize currentView = _currentView;
 @synthesize views = _views;
 @synthesize centerIndex = _centerIndex;
 @synthesize currentViewsCount = _currentViewsCount;
@@ -167,8 +168,10 @@ static const NSUInteger viewsCount = 5;
           }
 
           [self.views removeObjectAtIndex:viewsCount-1];
-          [self.views insertObject:viewToInsert atIndex:_centerIndex];
+          [self.views insertObject:viewToInsert atIndex:self.centerIndex];
           
+          self.currentView = [self.views objectAtIndex:self.centerIndex];
+
           if (_centerIndex == [[self validViewIndexes] lastIndex]) {
             [self setNeedsLayout];
           }
@@ -247,6 +250,7 @@ static const NSUInteger viewsCount = 5;
       
       completion:^(BOOL finished) {
         [self.views removeObjectAtIndex:self.centerIndex];
+        self.currentView = [self.views objectAtIndex:self.centerIndex];
         
         // If we just deleted the last view on the list (ie. the view self.centerIndex is NSNull) jump backwards
         // one view.
@@ -335,6 +339,7 @@ static const NSUInteger viewsCount = 5;
   }
   
   self.currentPage += shiftAmount;
+  self.currentView = [self.views objectAtIndex:self.centerIndex];
   
   if (shiftAmount != 0 && [self.delegate respondsToSelector:@selector(didChangeCurrentPageFromIndex:toIndex:)]) {
     [self.delegate didChangeCurrentPageFromIndex:self.currentPage-shiftAmount toIndex:self.currentPage];
@@ -378,7 +383,16 @@ static const NSUInteger viewsCount = 5;
   }
   
   self.currentPage = index;
+  self.currentView = [self.views objectAtIndex:self.centerIndex];
   [self setNeedsLayout];
+}
+
+- (void)performSelectorOnViews:(SEL)selector withObject:(id)object {
+  [self.views enumerateObjectsUsingBlock:^(id obj, NSUInteger index, BOOL *stop){
+    if ([obj respondsToSelector:selector]) {
+      [obj performSelector:selector withObject:object];
+    }
+  }];
 }
 
 - (void)moveForwardOnePage:(BOOL)animated {
