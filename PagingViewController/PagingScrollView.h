@@ -42,8 +42,8 @@
 - (void)insertViewAfterCurrentPage;
 - (void)deleteViewAtCurrentPage;
 
-- (void)moveForwardOnePage:(BOOL)animated;
-- (void)moveBackwardsOnePage:(BOOL)animated;
-- (void)jumpToPageAtIndex:(NSInteger)index animated:(BOOL)animated;
+- (void)moveForwardOnePage:(BOOL)animated completion:(void(^)(void))completion;
+- (void)moveBackwardsOnePage:(BOOL)animated completion:(void(^)(void))completion;
+- (void)jumpToPageAtIndex:(NSInteger)index animated:(BOOL)animated completion:(void(^)(void))completion;
 - (void)performSelectorOnViews:(SEL)selector withObject:(id)object;
 @end

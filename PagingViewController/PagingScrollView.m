@@ -52,7 +52,7 @@ static const NSUInteger viewsCount = 5;
     _scrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:_scrollView];
     
-    [self jumpToPageAtIndex:_currentPage animated:NO];
+    [self jumpToPageAtIndex:_currentPage animated:NO completion:nil];
       
     self.backgroundColor = [UIColor whiteColor];
   }
@@ -185,13 +185,9 @@ static const NSUInteger viewsCount = 5;
 }
 
 - (void)insertViewAfterCurrentPage {
-  [self moveForwardOnePage:YES];
-  
-  double delayInSeconds = 0.6;
-  dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-  dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+  [self moveForwardOnePage:YES completion:^{
     [self insertViewBeforeCurrentPage];
-  });
+  }];
 }
 
 // Deletes the current view.  The contact for this method stipulates that, while the
@@ -256,11 +252,11 @@ static const NSUInteger viewsCount = 5;
         // one view.
         UIView *newCenterView = [self.views objectAtIndex:self.centerIndex];
         if ([newCenterView isKindOfClass:[NSNull class]]) {
-          [self moveBackwardsOnePage:YES];
-        }
-        
-        if ([self.delegate respondsToSelector:@selector(didDeleteViewAtIndex:)]) {
-          [self.delegate didDeleteViewAtIndex:self.currentPage];
+          [self moveBackwardsOnePage:YES completion:^{
+            if ([self.delegate respondsToSelector:@selector(didDeleteViewAtIndex:)]) {
+              [self.delegate didDeleteViewAtIndex:self.currentPage];
+            }
+          }];
         }
       }];
   }];
@@ -346,7 +342,7 @@ static const NSUInteger viewsCount = 5;
   }
 }
 
-- (void)jumpToPageAtIndex:(NSInteger)index animated:(BOOL)animated {
+- (void)jumpToPageAtIndex:(NSInteger)index animated:(BOOL)animated completion:(void(^)(void))completion {
   BOOL leftIsNil = NO;
   BOOL rightIsNil = NO;
   NSInteger offset = index - viewsCount / 2;
@@ -395,43 +391,51 @@ static const NSUInteger viewsCount = 5;
   }];
 }
 
-- (void)moveForwardOnePage:(BOOL)animated {
+- (void)moveForwardOnePage:(BOOL)animated completion:(void(^)(void))completion {
   CGFloat widthPerElement = self.scrollView.contentSize.width / self.currentViewsCount;
   
   void(^animations)() = ^{
     self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x + widthPerElement, 0.0f);
   };
   
-  void(^completion)(BOOL finished) = ^(BOOL finished){
+  void(^thisCompletion)(BOOL finished) = ^(BOOL finished){
     [self shift:1];
     [self setNeedsLayout];
+    
+    if (completion) {
+      completion();
+    }
   };
   
   if (animated) {
-    [UIView animateWithDuration:0.3f animations:animations completion:completion];
+    [UIView animateWithDuration:0.3f animations:animations completion:thisCompletion];
   } else {
     animations();
-    completion(YES);
+    thisCompletion(YES);
   }
 }
 
-- (void)moveBackwardsOnePage:(BOOL)animated {
+- (void)moveBackwardsOnePage:(BOOL)animated completion:(void(^)(void))completion {
   CGFloat widthPerElement = self.scrollView.contentSize.width / self.currentViewsCount;
   
   void(^animations)() = ^{
     self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x - widthPerElement, 0.0f);
   };
   
-  void(^completion)(BOOL finished) = ^(BOOL finished){
+  void(^thisCompletion)(BOOL finished) = ^(BOOL finished){
     [self shift:-1];
     [self setNeedsLayout];
+    
+    if (completion) {
+      completion();
+    }
   };
   
   if (animated) {
-    [UIView animateWithDuration:0.3f animations:animations completion:completion];
+    [UIView animateWithDuration:0.3f animations:animations completion:thisCompletion];
   } else {
     animations();
-    completion(YES);
+    thisCompletion(YES);
   }
 }
 
