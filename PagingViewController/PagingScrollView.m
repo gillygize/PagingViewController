@@ -117,16 +117,16 @@ static const NSUInteger viewsCount = 5;
 // self.views array can be manipulated during its execution, by the time this method
 // is finished, the array will be back to its normal operation.
 - (void)insertViewBeforeCurrentPage {
-  if (![self.delegate respondsToSelector:@selector(canInsertViewAtIndex:)] ||
-      ![self.delegate canInsertViewAtIndex:self.currentPage]) {
+  if (![self.delegate respondsToSelector:@selector(pagingScrollView:canInsertViewAtIndex:)] ||
+      ![self.delegate pagingScrollView:self canInsertViewAtIndex:self.currentPage]) {
     return;
   }
   
-  if ([self.delegate respondsToSelector:@selector(willInsertViewAtIndex:)]) {
-    [self.delegate willInsertViewAtIndex:self.currentPage];
+  if ([self.delegate respondsToSelector:@selector(pagingScrollView:willInsertViewAtIndex:)]) {
+    [self.delegate pagingScrollView:self willInsertViewAtIndex:self.currentPage];
   }
   
-  UIView *viewToInsert = [self.delegate viewToInsertAtIndex:self.currentPage];
+  UIView *viewToInsert = [self.delegate pagingScrollView:self viewToInsertAtIndex:self.currentPage];
   
   viewToInsert.alpha = 0.0f;
   viewToInsert.frame = CGRectMake(
@@ -176,8 +176,8 @@ static const NSUInteger viewsCount = 5;
             [self setNeedsLayout];
           }
       
-          if ([self.delegate respondsToSelector:@selector(didInsertViewAtIndex:)]) {
-            [self.delegate didInsertViewAtIndex:self.currentPage];
+          if ([self.delegate respondsToSelector:@selector(pagingScrollView:didInsertViewAtIndex:)]) {
+            [self.delegate pagingScrollView:self didInsertViewAtIndex:self.currentPage];
           }
         }
       ];
@@ -194,17 +194,17 @@ static const NSUInteger viewsCount = 5;
 // self.views array can be manipulated during its execution, by the time this method
 // is finished, the array will be back to its normal operation.
 - (void)deleteViewAtCurrentPage {
-  if (![self.delegate respondsToSelector:@selector(canDeleteViewAtIndex:)] ||
-      ![self.delegate canDeleteViewAtIndex:self.currentPage]) {
+  if (![self.delegate respondsToSelector:@selector(pagingScrollView:canDeleteViewAtIndex:)] ||
+      ![self.delegate pagingScrollView:self canDeleteViewAtIndex:self.currentPage]) {
     return;
   }
   
-  if ([self.delegate respondsToSelector:@selector(willDeleteViewAtIndex:)]) {
-    [self.delegate willDeleteViewAtIndex:self.currentPage];
+  if ([self.delegate respondsToSelector:@selector(pagingScrollView:willDeleteViewAtIndex:)]) {
+    [self.delegate pagingScrollView:self willDeleteViewAtIndex:self.currentPage];
   }
 
   UIView *centerView = [self.views objectAtIndex:_centerIndex];
-  id lastItem = [self.delegate viewForIndex:self.currentPage+_centerIndex];
+  id lastItem = [self.delegate pagingScrollView:self viewForIndex:self.currentPage+_centerIndex];
     
   if (nil == lastItem || [[self validViewIndexes] lastIndex] != viewsCount - 1) {
     lastItem = [NSNull null];
@@ -253,8 +253,8 @@ static const NSUInteger viewsCount = 5;
         UIView *newCenterView = [self.views objectAtIndex:self.centerIndex];
         if ([newCenterView isKindOfClass:[NSNull class]]) {
           [self moveBackwardsOnePage:YES completion:^{
-            if ([self.delegate respondsToSelector:@selector(didDeleteViewAtIndex:)]) {
-              [self.delegate didDeleteViewAtIndex:self.currentPage];
+            if ([self.delegate respondsToSelector:@selector(pagingScrollView:didDeleteViewAtIndex:)]) {
+              [self.delegate pagingScrollView:self didDeleteViewAtIndex:self.currentPage];
             }
           }];
         }
@@ -266,8 +266,8 @@ static const NSUInteger viewsCount = 5;
 - (void)shift:(NSInteger)shiftAmount {
   NSAssert(abs(shiftAmount) <= viewsCount / 2, @"The shift was greater than half of the array");
   
-  if (shiftAmount != 0 && [self.delegate respondsToSelector:@selector(willChangeCurrentPageFromIndex:toIndex:)]) {
-    [self.delegate willChangeCurrentPageFromIndex:self.currentPage toIndex:self.currentPage+shiftAmount];
+  if (shiftAmount != 0 && [self.delegate respondsToSelector:@selector(pagingScrollView:willChangeCurrentPageFromIndex:toIndex:)]) {
+    [self.delegate pagingScrollView:self willChangeCurrentPageFromIndex:self.currentPage toIndex:self.currentPage+shiftAmount];
   }
   
   if (shiftAmount > 0) {
@@ -290,7 +290,7 @@ static const NSUInteger viewsCount = 5;
     BOOL insertNull = NO;
     
     for (int i = 1; i <= shiftAmount; i++) {
-      id view = [self.delegate viewForIndex:self.currentPage + viewsCount / 2 + i];
+      id view = [self.delegate pagingScrollView:self viewForIndex:self.currentPage + viewsCount / 2 + i];
       
       if (insertNull || (nil == view)) {
         view = [NSNull null];
@@ -323,7 +323,7 @@ static const NSUInteger viewsCount = 5;
     BOOL insertNull = NO;
     
     for (int i = 1; i <= positiveShiftAmount; i++) {
-      id view = [self.delegate viewForIndex:self.currentPage - viewsCount / 2 - i];
+      id view = [self.delegate pagingScrollView:self viewForIndex:self.currentPage - viewsCount / 2 - i];
       
       if (insertNull || (nil == view)) {
         view = [NSNull null];
@@ -337,8 +337,8 @@ static const NSUInteger viewsCount = 5;
   self.currentPage += shiftAmount;
   self.currentView = [self.views objectAtIndex:self.centerIndex];
   
-  if (shiftAmount != 0 && [self.delegate respondsToSelector:@selector(didChangeCurrentPageFromIndex:toIndex:)]) {
-    [self.delegate didChangeCurrentPageFromIndex:self.currentPage-shiftAmount toIndex:self.currentPage];
+  if (shiftAmount != 0 && [self.delegate respondsToSelector:@selector(pagingScrollView:didChangeCurrentPageFromIndex:toIndex:)]) {
+    [self.delegate pagingScrollView:self didChangeCurrentPageFromIndex:self.currentPage-shiftAmount toIndex:self.currentPage];
   }
 }
 
@@ -357,7 +357,7 @@ static const NSUInteger viewsCount = 5;
     NSInteger leftPosition = viewsCount / 2 - i + offset;
     NSInteger rightPosition = viewsCount / 2 + 1 + i + offset;
                 
-    UIView *leftView = [self.delegate viewForIndex:leftPosition];
+    UIView *leftView = [self.delegate pagingScrollView:self viewForIndex:leftPosition];
           
     if (leftIsNil || (nil == leftView)) {
       [self.views insertObject:[NSNull null] atIndex:0];
@@ -367,7 +367,7 @@ static const NSUInteger viewsCount = 5;
     }
                 
     if ((i != viewsCount / 2)) {
-      UIView *rightView = [_delegate viewForIndex:rightPosition];
+      UIView *rightView = [_delegate pagingScrollView:self viewForIndex:rightPosition];
           
       if (rightIsNil || (nil == rightView)) {
         [self.views addObject:[NSNull null]];
@@ -400,7 +400,6 @@ static const NSUInteger viewsCount = 5;
   
   void(^thisCompletion)(BOOL finished) = ^(BOOL finished){
     [self shift:1];
-    [self setNeedsLayout];
     
     if (completion) {
       completion();

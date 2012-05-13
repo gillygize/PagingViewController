@@ -8,24 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
+@class PagingScrollView;
+
 @protocol PagingScrollViewDelegate <NSObject>
 
-- (UIView*)viewForIndex:(NSInteger)index;
+- (UIView*)pagingScrollView:(PagingScrollView*)pagingScrollView viewForIndex:(NSInteger)index;
 
 @optional
-- (BOOL)canInsertViewAtIndex:(NSInteger)index;
-- (BOOL)canDeleteViewAtIndex:(NSInteger)index;
+- (BOOL)pagingScrollView:(PagingScrollView*)pagingScrollView canInsertViewAtIndex:(NSInteger)index;
+- (BOOL)pagingScrollView:(PagingScrollView*)pagingScrollView canDeleteViewAtIndex:(NSInteger)index;
 
-- (UIView*)viewToInsertAtIndex:(NSInteger)index;
+- (UIView*)pagingScrollView:(PagingScrollView*)pagingScrollView viewToInsertAtIndex:(NSInteger)index;
 
-- (void)willInsertViewAtIndex:(NSInteger)index;
-- (void)didInsertViewAtIndex:(NSInteger)index;
+- (void)pagingScrollView:(PagingScrollView*)pagingScrollView willInsertViewAtIndex:(NSInteger)index;
+- (void)pagingScrollView:(PagingScrollView*)pagingScrollView didInsertViewAtIndex:(NSInteger)index;
 
-- (void)willDeleteViewAtIndex:(NSInteger)index;
-- (void)didDeleteViewAtIndex:(NSInteger)index;
+- (void)pagingScrollView:(PagingScrollView*)pagingScrollView willDeleteViewAtIndex:(NSInteger)index;
+- (void)pagingScrollView:(PagingScrollView*)pagingScrollView didDeleteViewAtIndex:(NSInteger)index;
 
-- (void)willChangeCurrentPageFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex;
-- (void)didChangeCurrentPageFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIsndex;
+- (void)pagingScrollView:(PagingScrollView*)pagingScrollView willChangeCurrentPageFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex;
+- (void)pagingScrollView:(PagingScrollView*)pagingScrollView didChangeCurrentPageFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIsndex;
 @end
 
 @interface PagingScrollView : UIView <UIScrollViewDelegate>
