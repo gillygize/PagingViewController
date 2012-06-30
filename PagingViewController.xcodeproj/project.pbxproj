@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C93608A91579E7C50060BB82 /* ChocolateBoxProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C93608A81579E7C50060BB82 /* ChocolateBoxProtocol.h */; };
+		C93608AB1579E7D10060BB82 /* CBView.h in Headers */ = {isa = PBXBuildFile; fileRef = C93608AA1579E7D10060BB82 /* CBView.h */; };
+		C93608AD1579E7E00060BB82 /* CBMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = C93608AC1579E7E00060BB82 /* CBMachine.h */; };
+		C93608AF1579E7EB0060BB82 /* CBState.h in Headers */ = {isa = PBXBuildFile; fileRef = C93608AE1579E7EB0060BB82 /* CBState.h */; };
 		C939445715044107008DAE13 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C939445615044107008DAE13 /* QuartzCore.framework */; };
 		C939447915044E2E008DAE13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BB514F9EA1C00730FC5 /* Foundation.framework */; };
 		C939448615044E2E008DAE13 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BD414F9EA1C00730FC5 /* SenTestingKit.framework */; };
 		C939448715044E2E008DAE13 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BB314F9EA1C00730FC5 /* UIKit.framework */; };
 		C939448815044E2E008DAE13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BB514F9EA1C00730FC5 /* Foundation.framework */; };
 		C939448B15044E2E008DAE13 /* libPagingScrollView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C939447815044E2E008DAE13 /* libPagingScrollView.a */; };
-		C939449C15044E4B008DAE13 /* PagingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = C9555BF315029AE500730FC5 /* PagingScrollView.h */; settings = {ATTRIBUTES = (); }; };
+		C939449C15044E4B008DAE13 /* PagingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = C9555BF315029AE500730FC5 /* PagingScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C939449D15044E4F008DAE13 /* PagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9555BF415029AE500730FC5 /* PagingScrollView.m */; };
 		C9555BB414F9EA1C00730FC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BB314F9EA1C00730FC5 /* UIKit.framework */; };
 		C9555BB614F9EA1C00730FC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9555BB514F9EA1C00730FC5 /* Foundation.framework */; };
@@ -32,6 +36,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C936089C1579D8310060BB82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C93608971579D8300060BB82 /* ChocolateBox.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C0B2E5B214BD28FA008CE66F;
+			remoteInfo = ChocolateBox;
+		};
+		C936089E1579D8310060BB82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C93608971579D8300060BB82 /* ChocolateBox.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C0B2E5C214BD28FA008CE66F;
+			remoteInfo = ChocolateBoxTests;
+		};
 		C939448915044E2E008DAE13 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C9555BA614F9EA1C00730FC5 /* Project object */;
@@ -49,6 +67,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C93608971579D8300060BB82 /* ChocolateBox.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChocolateBox.xcodeproj; path = ../../ChocolateBox/ChocolateBox.xcodeproj; sourceTree = "<group>"; };
+		C93608A81579E7C50060BB82 /* ChocolateBoxProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChocolateBoxProtocol.h; path = ../ChocolateBox/ChocolateBox/ChocolateBoxProtocol.h; sourceTree = "<group>"; };
+		C93608AA1579E7D10060BB82 /* CBView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBView.h; path = ../ChocolateBox/ChocolateBox/CBView.h; sourceTree = "<group>"; };
+		C93608AC1579E7E00060BB82 /* CBMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CBMachine.h; path = ../ChocolateBox/ChocolateBox/CBMachine.h; sourceTree = "<group>"; };
+		C93608AE1579E7EB0060BB82 /* CBState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBState.h; path = ../ChocolateBox/ChocolateBox/CBState.h; sourceTree = "<group>"; };
 		C939445615044107008DAE13 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C939447815044E2E008DAE13 /* libPagingScrollView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPagingScrollView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C939448515044E2E008DAE13 /* PagingScrollViewTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagingScrollViewTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,9 +143,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C93608981579D8300060BB82 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C936089D1579D8310060BB82 /* libChocolateBox.a */,
+				C936089F1579D8310060BB82 /* ChocolateBoxTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C9555BA414F9EA1C00730FC5 = {
 			isa = PBXGroup;
 			children = (
+				C93608AE1579E7EB0060BB82 /* CBState.h */,
+				C93608AC1579E7E00060BB82 /* CBMachine.h */,
+				C93608AA1579E7D10060BB82 /* CBView.h */,
+				C93608A81579E7C50060BB82 /* ChocolateBoxProtocol.h */,
 				C9555BB914F9EA1C00730FC5 /* PagingViewController */,
 				C9555BDA14F9EA1C00730FC5 /* PagingViewControllerTests */,
 				C9555BB214F9EA1C00730FC5 /* Frameworks */,
@@ -172,6 +208,7 @@
 		C9555BBA14F9EA1C00730FC5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C93608971579D8300060BB82 /* ChocolateBox.xcodeproj */,
 				C9555BBB14F9EA1C00730FC5 /* PagingViewController-Info.plist */,
 				C9555BBC14F9EA1C00730FC5 /* InfoPlist.strings */,
 				C9555BBF14F9EA1C00730FC5 /* main.m */,
@@ -207,6 +244,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C939449C15044E4B008DAE13 /* PagingScrollView.h in Headers */,
+				C93608AF1579E7EB0060BB82 /* CBState.h in Headers */,
+				C93608A91579E7C50060BB82 /* ChocolateBoxProtocol.h in Headers */,
+				C93608AB1579E7D10060BB82 /* CBView.h in Headers */,
+				C93608AD1579E7E00060BB82 /* CBMachine.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +345,12 @@
 			mainGroup = C9555BA414F9EA1C00730FC5;
 			productRefGroup = C9555BB014F9EA1C00730FC5 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C93608981579D8300060BB82 /* Products */;
+					ProjectRef = C93608971579D8300060BB82 /* ChocolateBox.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C9555BAE14F9EA1C00730FC5 /* PagingViewController */,
@@ -313,6 +360,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C936089D1579D8310060BB82 /* libChocolateBox.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libChocolateBox.a;
+			remoteRef = C936089C1579D8310060BB82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C936089F1579D8310060BB82 /* ChocolateBoxTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChocolateBoxTests.octest;
+			remoteRef = C936089E1579D8310060BB82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C939448215044E2E008DAE13 /* Resources */ = {
@@ -443,6 +507,7 @@
 		C939449515044E2E008DAE13 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = (
 					armv6,
 					"$(ARCHS_STANDARD_32_BIT)",
@@ -455,12 +520,14 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
 		C939449615044E2E008DAE13 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = (
 					armv6,
 					"$(ARCHS_STANDARD_32_BIT)",
@@ -473,6 +540,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
@@ -559,6 +627,7 @@
 				INFOPLIST_FILE = "PagingViewController/PagingViewController-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -571,6 +640,7 @@
 				INFOPLIST_FILE = "PagingViewController/PagingViewController-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
